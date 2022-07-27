@@ -1,6 +1,6 @@
 const expandBtn = document.querySelectorAll('.expand-btn')
-// let closeBtn = document.getElementById('close-btn')
-const questionText = document.getElementsByClassName('question')
+const questions = document.getElementsByClassName('question')
+
 
 expandBtn.forEach(function(btn){
   btn.addEventListener('click', function(e){
@@ -15,19 +15,13 @@ expandBtn.forEach(function(btn){
     
     const nodeList = question.childNodes;
     nodeList[5].classList.toggle('question-visibility')
+
+    for (const key in questions){
+      if (questions[key] !== questionTitle && typeof questions[key] === 'object'){
+        otherText = questions[key].childNodes[1].childNodes[5];
+        otherText.classList.add('question-visibility')
+      }
+    }
+
   })
 })
-
-// for (var i = 0; i < expandBtn.length; i++){
-//   expandBtn[i].addEventListener('click', () => {
-//     toggleQuestion(i)
-//   });
-// }
-
-// function toggleQuestion(btnNum){
-//   console.log(btnNum)
-//   // for (var i = 0; i < questionText.length; i++){
-//   //   questionText[i].classList.toggle('question-visibility')
-//   // }
-//   questionText[0].toggleAttribute('question-visibility')
-// }
